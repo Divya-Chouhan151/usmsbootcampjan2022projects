@@ -1,1 +1,23 @@
 
+pipeline{
+agent any
+
+tools {
+    maven 'maven'
+  }
+stages{
+        stage('Build'){
+                      steps{
+                          script{
+                                 try{
+                                      sh " mvn -f pom.xml test"
+                                 }
+                                 catch(all){
+                                      echo "Test stage Failed"
+                                 }
+                          }
+                     }
+      
+        }
+    }
+    }
